@@ -12,9 +12,11 @@ interface SnippetEditFormProps {
 export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
   const [code, setCode] = useState(snippet.code);
 
-  function handleEditorChange(value: string | undefined) {
-    console.log(value);
+  function handleEditorChange(value: string = "") {
+    setCode(value);
   }
+
+  const editSnippetAction = editSnippet.bind(null, snippet.id, code);
 
   return (
     <div>
@@ -30,6 +32,12 @@ export default function SnippetEditForm({ snippet }: SnippetEditFormProps) {
         }}
         onChange={handleEditorChange}
       />
+
+      <form action={editSnippetAction}>
+        <button type="submit" className="p-2 border-rounded">
+          Save
+        </button>
+      </form>
     </div>
   );
 }
