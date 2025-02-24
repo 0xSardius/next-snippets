@@ -37,9 +37,12 @@ export default function SnippetCreatePage() {
           />
         </div>
 
-        <div className="flex gap-4">
-          <p className="text-red-500">{formState.message}</p>
-        </div>
+        {formState.message ? (
+          <div className="my-2 p-2 bg-red-200 border rounded border-red-400">
+            {formState.message}
+          </div>
+        ) : null}
+
         <button type="submit" className="border rounded p-2 bg-blue-200">
           Create
         </button>
